@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="650.0" prefWidth="1170.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.deb.Controller.BookRackController">
+   <children>
+      <ImageView fitHeight="650.0" fitWidth="1042.0" layoutX="115.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/LIBRY%20ANIME2.png" />
+         </image>
+      </ImageView>
+      <AnchorPane fx:id="root" opacity="0.81" prefHeight="650.0" prefWidth="1170.0" style="-fx-background-color: #D0F0C0;">
+         <children>
+            <JFXButton layoutX="843.0" layoutY="464.0" onAction="#btnClearOnAction" prefHeight="41.0" prefWidth="130.0" style="-fx-background-color: #6D214F; -fx-background-radius: 8; -fx-border-color: #f5f6fa;" text="       CLEAR" textFill="#fffbfb">
+               <font>
+                  <Font name="KacstOne Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton layoutX="1000.0" layoutY="464.0" onAction="#btnDeleteOnAction" prefHeight="41.0" prefWidth="130.0" style="-fx-background-color: #6D214F; -fx-background-radius: 8; -fx-border-color: #f5f6fa;" text="       DELETE" textFill="#fdfafa">
+               <font>
+                  <Font name="KacstOne Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton layoutX="843.0" layoutY="409.0" onAction="#btnSaveOnAction" prefHeight="41.0" prefWidth="130.0" style="-fx-background-color: #2d3436; -fx-background-radius: 8; -fx-border-color: #f5f6fa;" text="      SAVE" textFill="#fdfcfc">
+               <font>
+                  <Font name="KacstOne Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton layoutX="1000.0" layoutY="409.0" onAction="#btnUpdateOnAction" prefHeight="41.0" prefWidth="130.0" style="-fx-background-color: #2d3436; -fx-background-radius: 8; -fx-border-color: #f5f6fa;" text="         UPDATE" textFill="#fcf9f9">
+               <font>
+                  <Font name="KacstOne Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton layoutX="1007.0" layoutY="585.0" onAction="#btnBackOnAction" prefHeight="41.0" prefWidth="130.0" style="-fx-background-color: #6D214F; -fx-background-radius: 8; -fx-border-color: #f5f6fa;" text="BACK" textFill="#fdfafa">
+               <font>
+                  <Font name="KacstOne Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <TableView fx:id="tblBookrack" layoutX="53.0" layoutY="280.0" prefHeight="318.0" prefWidth="719.0">
+               <columns>
+                  <TableColumn fx:id="colCode" prefWidth="126.0" text="Rack Code" />
+                  <TableColumn fx:id="colQuantityBooks" prefWidth="160.0" text="Quantity of books" />
+                  <TableColumn fx:id="colCategory" prefWidth="155.5" text="Category Type" />
+                  <TableColumn fx:id="colNameOfBooks" prefWidth="328.5" text="Name Of Books" />
+               </columns>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </TableView>
+            <TextArea fx:id="txtNameOfBooks" layoutX="817.0" layoutY="156.0" prefHeight="136.0" prefWidth="313.0" promptText="Name Of Books" style="-fx-border-color: #222f3e;">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </TextArea>
+            <TextField fx:id="txtCategoryOfBooks" layoutX="419.0" layoutY="156.0" prefHeight="29.0" prefWidth="313.0" promptText="Category of books" style="-fx-border-color: #222f3e;">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="txtQuantity" layoutX="53.0" layoutY="212.0" prefHeight="29.0" prefWidth="313.0" promptText="Quantity of books" style="-fx-border-color: #222f3e;">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </TextField>
+            <Label layoutX="366.0" layoutY="22.0" prefHeight="87.0" prefWidth="385.0" style="-fx-background-color: #50C878;" text="     BOOK RACK MANAGEMENT" textFill="#171717">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtCode" layoutX="53.0" layoutY="156.0" onAction="#txtCodeOnAction" prefHeight="29.0" prefWidth="313.0" promptText="Rack Code" style="-fx-border-color: #222f3e;">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </TextField>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

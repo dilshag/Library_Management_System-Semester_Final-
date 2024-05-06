@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="485.0" prefWidth="490.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.deb.Controller.LoginController">
+   <children>
+      <ImageView fitHeight="485.0" fitWidth="490.0" layoutX="2.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/login.jpeg" />
+         </image>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0f0c0" height="435.0" layoutX="86.0" layoutY="18.0" opacity="0.5" stroke="#d0f0c0" strokeType="INSIDE" width="300.0">
+         <effect>
+            <DropShadow />
+         </effect></Rectangle>
+      <Text layoutX="108.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Welcome, Please login in to your account" wrappingWidth="255.99999999999994">
+         <font>
+            <Font name="FreeSerif Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="126.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UserName :" wrappingWidth="138.8671875">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="130.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password :" wrappingWidth="130.078125">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtUserName" layoutX="126.0" layoutY="127.0" prefHeight="24.0" prefWidth="215.0" />
+      <TextField fx:id="txtPassword" accessibleRole="PASSWORD_FIELD" layoutX="129.0" layoutY="194.0" prefHeight="24.0" prefWidth="215.0" />
+      <Text fx:id="txtForgetPassword" layoutX="218.0" layoutY="240.0" onMouseClicked="#txtForgetPasswordAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot Password?">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <JFXButton fx:id="btnLogin" layoutX="158.0" layoutY="297.0" onAction="#btnLoginOnAction" prefHeight="28.0" prefWidth="157.0" style="-fx-background-color: #0b6623;" text="Login" textFill="#e5f2f5" />
+      <JFXButton fx:id="btnCreateAccount" layoutX="158.0" layoutY="369.0" onAction="#signUpOnAction" prefHeight="28.0" prefWidth="157.0" style="-fx-background-color: #000000;" text="Create New Account" textFill="#e5f2f5" />
+      <Text layoutX="221.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OR" wrappingWidth="30.26513671875">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
