@@ -7,124 +7,94 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="650.0" prefWidth="1170.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.deb.Controller.BookController">
+<AnchorPane fx:id="root" prefHeight="645.0" prefWidth="1029.0" style="-fx-background-color: fcfafa; -fx-border-color: #006266; -fx-border-width: 1;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.deb.Controller.BookController">
    <children>
-      <ImageView fitHeight="650.0" fitWidth="1042.0" layoutX="115.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../image/LIBRY%20ANIME2.png" />
-         </image>
-      </ImageView>
-      <AnchorPane layoutY="2.0" opacity="0.8" prefHeight="650.0" prefWidth="1170.0" style="-fx-background-color: #D0F0C0;">
-         <children>
-            <TableView fx:id="tblBook" layoutX="85.0" layoutY="337.0" prefHeight="278.0" prefWidth="625.0">
-               <columns>
-                  <TableColumn fx:id="colISBN" prefWidth="125.5" text="ISBN" />
-                  <TableColumn fx:id="colBookName" prefWidth="160.0" text="Book Name" />
-                  <TableColumn fx:id="colQtyOnHand" prefWidth="96.0" text="QtyOnHand" />
-                  <TableColumn fx:id="colCategory" prefWidth="136.0" text="Category" />
-                  <TableColumn fx:id="colAuthorId" prefWidth="101.0" text="Author ID" />
-               </columns>
-            </TableView>
-            <JFXButton layoutX="784.0" layoutY="378.0" onAction="#btnSaveOnAction" prefHeight="41.0" prefWidth="140.0" style="-fx-background-color: #2d3436; -fx-background-radius: 8; -fx-border-color: #f5f6fa; -fx-border-radius: 8;" text="      SAVE" textFill="#f5f3f3">
-               <font>
-                  <Font name="KacstOne Bold" size="12.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </JFXButton>
-            <JFXButton layoutX="976.0" layoutY="378.0" onAction="#btnUpdateOnAction" prefHeight="41.0" prefWidth="140.0" style="-fx-background-color: #2d3436; -fx-background-radius: 8; -fx-border-color: #f5f6fa; -fx-border-radius: 8;" text="         UPDATE" textFill="#f5f3f3">
-               <font>
-                  <Font name="KacstOne Bold" size="12.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </JFXButton>
-            <JFXButton layoutX="784.0" layoutY="440.0" onAction="#btnClearOnAction" prefHeight="41.0" prefWidth="140.0" style="-fx-background-color: #6D214F; -fx-background-radius: 8; -fx-border-color: #f5f6fa; -fx-border-radius: 8;" text="      CLEAR" textFill="#f5f3f3">
-               <font>
-                  <Font name="KacstOne Bold" size="12.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </JFXButton>
-            <JFXButton layoutX="974.0" layoutY="440.0" onAction="#btnDeleteOnAction" prefHeight="41.0" prefWidth="140.0" style="-fx-background-color: #6D214F; -fx-background-radius: 8; -fx-border-color: #f5f6fa; -fx-border-radius: 8;" text="         DELETE" textFill="#f5f3f3">
-               <font>
-                  <Font name="KacstOne Bold" size="12.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </JFXButton>
-            <JFXButton layoutX="998.0" layoutY="578.0" onAction="#btnBackOnAction" prefHeight="41.0" prefWidth="132.0" style="-fx-background-color: #6D214F; -fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #f5f6fa;" text="Back" textFill="#f5f3f3">
-               <font>
-                  <Font name="KacstOne Bold" size="13.0" />
-               </font>
-            </JFXButton>
-            <TextField fx:id="txtBookName" layoutX="629.0" layoutY="175.0" prefHeight="29.0" prefWidth="356.0" promptText="Book Name" style="-fx-border-color: #2d3436;">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="txtQtyOnHand" layoutX="629.0" layoutY="217.0" prefHeight="29.0" prefWidth="356.0" promptText="Qty On Hand" style="-fx-border-color: #2d3436;">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="txtCategory" layoutX="629.0" layoutY="257.0" prefHeight="29.0" prefWidth="356.0" promptText="category" style="-fx-border-color: #2d3436;">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="txtISBN" layoutX="629.0" layoutY="137.0" onAction="#txtISBNOnAction" prefHeight="29.0" prefWidth="356.0" promptText="ISBN" style="-fx-border-color: #2d3436;">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </TextField>
-         </children>
-      </AnchorPane>
-      <Label layoutX="353.0" layoutY="14.0" prefHeight="89.0" prefWidth="503.0" style="-fx-background-color: #50C878;" text="                    BOOK  MANAGEMENT" textFill="#171717">
+      <Label layoutX="-1.0" prefHeight="111.0" prefWidth="1028.0" style="-fx-background-color: #006266;" text="                    BOOK  MANAGEMENT" textFill="#171717">
          <font>
             <Font name="System Bold" size="21.0" />
          </font>
       </Label>
-      <Label layoutX="90.0" layoutY="137.0" prefHeight="41.0" prefWidth="109.0" text="Rack Code :">
+      <TextField fx:id="txtISBN" layoutX="78.0" layoutY="222.0" onAction="#txtISBNOnAction" prefHeight="29.0" prefWidth="356.0" promptText="ISBN" style="-fx-border-color: #2d3436;">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtBookName" layoutX="78.0" layoutY="259.0" prefHeight="29.0" prefWidth="356.0" promptText="Book Name" style="-fx-border-color: #2d3436;">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </TextField>
+      <Label layoutX="78.0" layoutY="176.0" prefHeight="41.0" prefWidth="101.0" text="Author ID :">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="94.0" layoutY="187.0" prefHeight="41.0" prefWidth="124.0" text="CategoryType : ">
+      <JFXComboBox fx:id="cmbAuthorId" layoutX="221.0" layoutY="180.0" onAction="#cmbAuthorIdOnAction" prefHeight="33.0" prefWidth="213.0" />
+      <TextField fx:id="txtQtyOnHand" layoutX="498.0" layoutY="222.0" prefHeight="29.0" prefWidth="356.0" promptText="Qty On Hand" style="-fx-border-color: #2d3436;">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtCategory" layoutX="498.0" layoutY="259.0" prefHeight="29.0" prefWidth="356.0" promptText="category" style="-fx-border-color: #2d3436;">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </TextField>
+      <JFXComboBox fx:id="cmbRackCode" layoutX="640.0" layoutY="188.0" onAction="#cmbRackCodeOnAction" prefHeight="29.0" prefWidth="213.0" />
+      <Label layoutX="512.0" layoutY="182.0" prefHeight="41.0" prefWidth="109.0" text="Rack Code :">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="94.0" layoutY="238.0" prefHeight="41.0" prefWidth="101.0" text="Author ID :">
+      <JFXButton layoutX="705.0" layoutY="515.0" onAction="#btnSaveOnAction" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #2d3436; -fx-background-radius: 8; -fx-border-color: #f5f6fa; -fx-border-radius: 8;" text="      SAVE" textFill="#f5f3f3">
          <font>
-            <Font name="System Bold" size="13.0" />
+            <Font name="KacstOne Bold" size="12.0" />
          </font>
-      </Label>
-      <Label layoutX="94.0" layoutY="286.0" prefHeight="41.0" prefWidth="124.0" text="Author name :">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton layoutX="858.0" layoutY="515.0" onAction="#btnUpdateOnAction" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #2d3436; -fx-background-radius: 8; -fx-border-color: #f5f6fa; -fx-border-radius: 8;" text="         UPDATE" textFill="#f5f3f3">
          <font>
-            <Font name="System Bold" size="13.0" />
+            <Font name="KacstOne Bold" size="12.0" />
          </font>
-      </Label>
-      <JFXComboBox fx:id="cmbRackCode" layoutX="264.0" layoutY="137.0" onAction="#cmbRackCodeOnAction" prefHeight="29.0" prefWidth="213.0" />
-      <Label fx:id="lblCategoryType" layoutX="264.0" layoutY="178.0" prefHeight="41.0" prefWidth="164.0" textFill="#2814bf">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton layoutX="705.0" layoutY="554.0" onAction="#btnClearOnAction" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #488E91; -fx-background-radius: 8; -fx-border-color: #f5f6fa; -fx-border-radius: 8;" text="      CLEAR" textFill="#f5f3f3">
          <font>
-            <Font name="System Bold" size="17.0" />
+            <Font name="KacstOne Bold" size="12.0" />
          </font>
-      </Label>
-      <JFXComboBox fx:id="cmbAuthorId" layoutX="264.0" layoutY="228.0" onAction= "#cmbAuthorIdOnAction" prefHeight="33.0" prefWidth="213.0" />
-      <Label fx:id="lblAuthorName" layoutX="255.0" layoutY="279.0" prefHeight="41.0" prefWidth="254.0" textFill="#2814bf">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton layoutX="858.0" layoutY="554.0" onAction="#btnDeleteOnAction" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #488E91; -fx-background-radius: 8; -fx-border-color: #f5f6fa; -fx-border-radius: 8;" text="         DELETE" textFill="#f5f3f3">
          <font>
-            <Font name="System Bold" size="17.0" />
+            <Font name="KacstOne Bold" size="12.0" />
          </font>
-      </Label>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton layoutX="859.0" layoutY="593.0" onAction="#btnBackOnAction" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #2d3436; -fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #f5f6fa;" text="Back" textFill="#f5f3f3">
+         <font>
+            <Font name="KacstOne Bold" size="13.0" />
+         </font>
+      </JFXButton>
+      <TableView fx:id="tblBook" layoutX="78.0" layoutY="302.0" prefHeight="198.0" prefWidth="781.0">
+         <columns>
+            <TableColumn fx:id="colISBN" prefWidth="125.5" text="ISBN" />
+            <TableColumn fx:id="colBookName" prefWidth="173.0" text="Book Name" />
+            <TableColumn fx:id="colQtyOnHand" prefWidth="90.0" text="QtyOnHand" />
+            <TableColumn fx:id="colCategory" prefWidth="155.0" text="Category" />
+            <TableColumn fx:id="colAuthorId" prefWidth="113.0" text="Author ID" />
+            <TableColumn fx:id="colRackCode" prefWidth="124.0" text="Rack Code" />
+         </columns>
+      </TableView>
    </children>
 </AnchorPane>

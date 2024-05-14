@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -10,48 +11,51 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="485.0" prefWidth="490.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.deb.Controller.LoginController">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="435.0" prefWidth="730.0" style="-fx-background-color: #006266;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.deb.Controller.LoginController">
    <children>
-      <ImageView fitHeight="485.0" fitWidth="490.0" layoutX="2.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="435.0" fitWidth="421.0" layoutX="309.0" pickOnBounds="true">
          <image>
-            <Image url="@../image/login.jpeg" />
+            <Image url="@../image/beautiful-landscape-from-magazine-coming-life_23-2151158557%20(1).jpg" />
          </image>
          <effect>
             <DropShadow />
          </effect>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0f0c0" height="435.0" layoutX="86.0" layoutY="18.0" opacity="0.5" stroke="#d0f0c0" strokeType="INSIDE" width="300.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcfafa" height="435.0" opacity="0.0" stroke="#fcfafa" strokeType="INSIDE" width="306.0">
          <effect>
             <DropShadow />
          </effect></Rectangle>
-      <Text layoutX="108.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Welcome, Please login in to your account" wrappingWidth="255.99999999999994">
+      <Text layoutX="21.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Welcome, Please login in to your account" wrappingWidth="255.99999999999994">
          <font>
             <Font name="FreeSerif Bold" size="14.0" />
          </font>
       </Text>
-      <Text layoutX="126.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UserName :" wrappingWidth="138.8671875">
+      <Text layoutX="40.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UserName :" wrappingWidth="138.8671875">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="130.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password :" wrappingWidth="130.078125">
+      <Text layoutX="43.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password :" wrappingWidth="130.078125">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <TextField fx:id="txtUserName" layoutX="126.0" layoutY="127.0" prefHeight="24.0" prefWidth="215.0" />
-      <TextField fx:id="txtPassword" accessibleRole="PASSWORD_FIELD" layoutX="129.0" layoutY="194.0" prefHeight="24.0" prefWidth="215.0" />
-      <Text fx:id="txtForgetPassword" layoutX="218.0" layoutY="240.0" onMouseClicked="#txtForgetPasswordAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot Password?">
+      <TextField fx:id="txtUserName" layoutX="39.0" layoutY="206.0" prefHeight="24.0" prefWidth="215.0" />
+      <TextField fx:id="txtPassword" accessibleRole="PASSWORD_FIELD" layoutX="39.0" layoutY="260.0" prefHeight="24.0" prefWidth="215.0" />
+      <JFXButton fx:id="btnLogin" layoutX="89.0" layoutY="312.0" onAction="#btnLoginOnAction" prefHeight="28.0" prefWidth="118.0" style="-fx-background-color: #2d3436;" text="Login" textFill="#e5f2f5" />
+      <Text layoutX="134.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OR" wrappingWidth="30.26513671875">
          <font>
-            <Font size="14.0" />
+            <Font size="15.0" />
          </font>
       </Text>
-      <JFXButton fx:id="btnLogin" layoutX="158.0" layoutY="297.0" onAction="#btnLoginOnAction" prefHeight="28.0" prefWidth="157.0" style="-fx-background-color: #0b6623;" text="Login" textFill="#e5f2f5" />
-      <JFXButton fx:id="btnCreateAccount" layoutX="158.0" layoutY="369.0" onAction="#signUpOnAction" prefHeight="28.0" prefWidth="157.0" style="-fx-background-color: #000000;" text="Create New Account" textFill="#e5f2f5" />
-      <Text layoutX="221.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OR" wrappingWidth="30.26513671875">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
+      <ImageView fitHeight="132.0" fitWidth="165.0" layoutX="60.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/c3e9120ceb47bbaf2070a41a6ff2d391.gif" />
+         </image>
+      </ImageView>
+      <Hyperlink layoutX="120.0" layoutY="371.0" onAction="#hyperSignUpOnAction" style="-fx-background-color: #488E91;" text="Sign up" textFill="#141414" />
    </children>
+   <effect>
+      <DropShadow />
+   </effect>
 </AnchorPane>

@@ -3,6 +3,7 @@ package lk.ijse.deb.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -12,6 +13,7 @@ import java.io.IOException;
 
 public class DashBoardController {
 
+    public AnchorPane ChildRoot;
     @FXML
     private Label lblAuthorCount;
 
@@ -31,34 +33,43 @@ public class DashBoardController {
     private AnchorPane root;
 
     @FXML
-    void btnAuthorsOnAction(ActionEvent event) throws IOException {
-        AnchorPane rootNode = (AnchorPane) FXMLLoader.load(this.getClass().getResource("/view/author.fxml"));
-        Scene scene = new Scene(rootNode);
-        Stage stage = (Stage)this.root.getScene().getWindow();
-        stage.setScene(scene);
-        stage.centerOnScreen();
-        stage.setTitle("BookAuthers Form");
+    void btnAuthorsOnAction(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/author.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        ChildRoot.getChildren().clear();
+        ChildRoot.getChildren().add(root);
 
     }
 
     @FXML
     void btnBookOnAction(ActionEvent event) throws IOException {
-        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/book.fxml"));
-        Stage stage = (Stage) this.root.getScene().getWindow();
-
-        stage.setScene(new Scene(anchorPane));
-        stage.setTitle("Book Form");
-        stage.centerOnScreen();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/book.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        ChildRoot.getChildren().clear();
+        ChildRoot.getChildren().add(root);
     }
 
     @FXML
     void btnBookrackOnAction(ActionEvent event) throws IOException {
-        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/bookRack.fxml"));
-        Stage stage = (Stage) this.root.getScene().getWindow();
-
-        stage.setScene(new Scene(anchorPane));
-        stage.setTitle("Book Rack Form");
-        stage.centerOnScreen();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/bookRack.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        ChildRoot.getChildren().clear();
+        ChildRoot.getChildren().add(root);
     }
 
     @FXML
@@ -68,43 +79,67 @@ public class DashBoardController {
 
     @FXML
     void btnMemberOnAction(ActionEvent event) throws IOException {
-        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/memberForm.fxml"));
-        Stage stage = (Stage) this.root.getScene().getWindow();
-
-        stage.setScene(new Scene(anchorPane));
-        stage.setTitle("Member Form");
-        stage.centerOnScreen();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/memberForm.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        ChildRoot.getChildren().clear();
+        ChildRoot.getChildren().add(root);
     }
 
     @FXML
     void btnMembershipFeeOnAction(ActionEvent event) throws IOException {
-        AnchorPane rootNode = (AnchorPane) FXMLLoader.load(this.getClass().getResource("/view/membershipFees.fxml"));
-        Scene scene = new Scene(rootNode);
-        Stage stage = (Stage)this.root.getScene().getWindow();
-        stage.setScene(scene);
-        stage.centerOnScreen();
-        stage.setTitle("MembershipFees Form");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/membershipFees.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        ChildRoot.getChildren().clear();
+        ChildRoot.getChildren().add(root);
 
     }
 
     @FXML
     void btnReservationOnAction(ActionEvent event) throws IOException {
-        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/reservation.fxml"));
-        Stage stage = (Stage) this.root.getScene().getWindow();
-
-        stage.setScene(new Scene(anchorPane));
-        stage.setTitle("Reservation Form");
-        stage.centerOnScreen();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/reservation.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        ChildRoot.getChildren().clear();
+        ChildRoot.getChildren().add(root);
     }
 
     @FXML
     void btnSupplierOnAction(ActionEvent event) throws IOException {
-        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/bookSupplier.fxml"));
-        Stage stage = (Stage) this.root.getScene().getWindow();
-
-        stage.setScene(new Scene(anchorPane));
-        stage.setTitle("Book Rack Form");
-        stage.centerOnScreen();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/bookSupplier.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        ChildRoot.getChildren().clear();
+        ChildRoot.getChildren().add(root);
+    }
+    @FXML
+    void btnEmailOnAction(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/emailForm.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        ChildRoot.getChildren().clear();
+        ChildRoot.getChildren().add(root);
     }
 
 }

@@ -62,16 +62,17 @@ public class BookRepo {
     }
 
     public static boolean update(Book book) throws SQLException {
-        String sql = "UPDATE book SET bookName =?, category = ?, qtyOnHand = ?, rackCode = ?,authorId = ? WWHERE ISBN =?";
+        String sql = "UPDATE book SET bookName =?, category = ?, qtyOnHand = ?, rackCode = ?,authorId = ? WHERE ISBN =?";
 
         Connection connection = DbConnection.getInstance().getConnection();
         PreparedStatement pstm = connection.prepareStatement(sql);
-        pstm.setObject(1,book.getISBN());
-        pstm.setObject(2,book.getBookName());
-        pstm.setObject(3,book.getCategory());
-        pstm.setObject(4,book.getQtyOnHand());
-        pstm.setObject(5,book.getRackCode());
-        pstm.setObject(6,book.getAuthorId());
+
+        pstm.setObject(1,book.getBookName());
+        pstm.setObject(2,book.getCategory());
+        pstm.setObject(3,book.getQtyOnHand());
+        pstm.setObject(4,book.getRackCode());
+        pstm.setObject(5,book.getAuthorId());
+        pstm.setObject(6,book.getISBN());
 
         return pstm.executeUpdate() > 0;    }
 

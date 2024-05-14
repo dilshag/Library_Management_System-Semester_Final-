@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 
-public class SupplierTm {
+public class BookSupplierTm {
     private String supplierId;
     private String supplierName;
     private String contactNumber;

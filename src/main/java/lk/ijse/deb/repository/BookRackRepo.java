@@ -61,15 +61,16 @@ public class BookRackRepo {
 
 
     public static boolean update(BookRack bookRack) throws SQLException {
-        String sql = "UPDATE bookRack SET qtyBooks   = ?, categoryOfBooks  = ? , nameOfBooks = ? WHERE rackCode = ?";
-
+        String sql = "UPDATE bookRack SET qtyBooks = ?, categoryOfBooks  = ? , nameOfBooks = ? WHERE rackCode = ?";
+//UPDATE bookRack SET qtyBooks = '20', categoryOfBooks  = 'Fiction' , nameOfBooks = 'Book1,Book2,Book3' WHERE rackCode = 'R001';
         Connection connection = DbConnection.getInstance().getConnection();
         PreparedStatement pstm = connection.prepareStatement(sql);
-        pstm.setObject(1, bookRack.getRackCode());
-        pstm.setObject(2, bookRack.getQtyBooks());
-        pstm.setObject(3, bookRack.getCategoryOfBooks());
-        pstm.setObject(4, bookRack.getNameOfBooks());
 
+
+        pstm.setObject(1, bookRack.getQtyBooks());
+        pstm.setObject(2, bookRack.getCategoryOfBooks());
+        pstm.setObject(3, bookRack.getNameOfBooks());
+        pstm.setObject(4, bookRack.getRackCode());
 
         return pstm.executeUpdate() > 0;
     }
@@ -95,4 +96,20 @@ public class BookRackRepo {
 
         return null;
     }
+
+    public static List<String> getCodes() throws SQLException {
+        String sql = "SELECT rackCode    FROM  bookRack";
+        ResultSet resultSet = DbConnection.getInstance()
+                .getConnection()
+                .prepareStatement(sql)
+                .executeQuery();
+
+        List<String> codeList = new ArrayList<>();
+        while (resultSet.next()) {
+            codeList.add(resultSet.getString(1));
+        }
+        return codeList;
+    }
+
+
 }

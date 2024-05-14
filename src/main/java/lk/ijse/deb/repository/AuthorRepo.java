@@ -67,12 +67,12 @@ public class AuthorRepo {
 
         Connection connection = DbConnection.getInstance().getConnection();
         PreparedStatement pstm = connection.prepareStatement(sql);
-        pstm.setObject(1, author.getAuthorId());
-        pstm.setObject(2, author.getAuthorName());
-        pstm.setObject(3, author.getText());
-        pstm.setObject(4, author.getNationality());
-        pstm.setObject(5, author.getCurrentlyBooksWrittenQty());
 
+        pstm.setObject(1, author.getAuthorName());
+        pstm.setObject(2, author.getText());
+        pstm.setObject(3, author.getNationality());
+        pstm.setObject(4, author.getCurrentlyBooksWrittenQty());
+        pstm.setObject(5, author.getAuthorId());
 
         return pstm.executeUpdate() > 0;
     }
@@ -105,29 +105,20 @@ public class AuthorRepo {
         return null;
     }
 
-    public static AuthorTm searchById(String id) throws SQLException {
 
-        String sql = "SELECT * FROM author WHERE authorId  = ?";
 
-        Connection connection = DbConnection.getInstance().getConnection();
-        PreparedStatement pstm = connection.prepareStatement(sql);
-        pstm.setObject(1, id);
 
-        ResultSet resultSet = pstm.executeQuery();
-        if (resultSet.next()) {
-            String authorId = resultSet.getString(1);
-            String authorName = resultSet.getString(2);
-            String text = resultSet.getString(3);
-            String nationality = resultSet.getString(4);
-            int currentlyBooksWrittenQty = Integer.parseInt(resultSet.getString(5));
+    public static List<String> getCodes() throws SQLException {
+        String sql = "SELECT authorId     FROM author  ";
+        ResultSet resultSet = DbConnection.getInstance()
+                .getConnection()
+                .prepareStatement(sql)
+                .executeQuery();
 
-            AuthorTm author = new AuthorTm(authorId, authorName, text, nationality, currentlyBooksWrittenQty);
-
-            return author;
+        List<String> codeList = new ArrayList<>();
+        while (resultSet.next()) {
+            codeList.add(resultSet.getString(1));
         }
-
-        return null;
+        return codeList;
     }
-
-
 }

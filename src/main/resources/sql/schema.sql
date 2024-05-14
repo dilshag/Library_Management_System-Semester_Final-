@@ -3,11 +3,15 @@ create database lbrySystem;
 use lbrySystem;
 
 CREATE TABLE Admin (
-                       email VARCHAR(255) NOT NULL,
-                       username VARCHAR(50) NOT NULL,
-                       password VARCHAR(255) NOT NULL,
-                       type VARCHAR(50),
-                       PRIMARY KEY (email, username)
+                       Type VARCHAR(25)  PRIMARY KEY,
+                       firstName VARCHAR(200) NOT NULL,
+                       lastName VARCHAR(250) NOT NULL,
+                       nic VARCHAR(20) NOT NULL,
+                       email TEXT NOT NULL,
+                       phonenumber VARCHAR(15) NOT NULL,
+                       username VARCHAR(30) NOT NULL,
+                       password VARCHAR(20) NOT NULL
+
 );
 
 create table membershipFee(
@@ -28,7 +32,7 @@ create  table member(
     EmailAddress varchar(450) not null ,
     IDNumber varchar(400) not null ,
     feeId  varchar(20) not null,
-    sNumber  varchar(15) not null ,
+
     constraint foreign key(feeId) references membershipFee(fee_id) on update cascade on delete cascade
 
 );

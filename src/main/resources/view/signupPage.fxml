@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
@@ -11,73 +12,81 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="485.0" prefWidth="490.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.deb.Controller.SignupPageController">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="435.0" prefWidth="730.0" style="-fx-background-color: #006266;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.deb.Controller.SignupPageController">
    <children>
-      <ImageView fitHeight="485.0" fitWidth="490.0" layoutX="2.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="435.0" fitWidth="421.0" layoutX="309.0" pickOnBounds="true">
          <image>
-            <Image url="@../image/login.jpeg" />
+            <Image url="@../image/beautiful-landscape-from-magazine-coming-life_23-2151158557%20(1).jpg" />
          </image>
          <effect>
             <DropShadow />
          </effect>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0f0c0" height="435.0" layoutX="86.0" layoutY="18.0" opacity="0.5" stroke="#d0f0c0" strokeType="INSIDE" width="300.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcfafa" height="435.0" layoutX="-2.0" layoutY="-1.0" opacity="0.0" stroke="#fcfafa" strokeType="INSIDE" width="311.0">
          <effect>
             <DropShadow />
          </effect>
       </Rectangle>
-      <TextField fx:id="txtFristname" layoutX="106.0" layoutY="58.0" prefHeight="22.0" prefWidth="261.0" promptText="Frist Name">
+      <TextField fx:id="txtFirstname" layoutX="20.0" layoutY="113.0" opacity="0.87" prefHeight="22.0" prefWidth="261.0" promptText="First Name">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtLastname" layoutX="106.0" layoutY="90.0" prefHeight="24.0" prefWidth="261.0" promptText="Last name">
+      <TextField fx:id="txtLastname" layoutX="20.0" layoutY="145.0" opacity="0.87" prefHeight="24.0" prefWidth="261.0" promptText="Last name">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtNIC" layoutX="106.0" layoutY="122.0" prefHeight="24.0" prefWidth="261.0" promptText="NIC Number">
+      <TextField fx:id="txtNIC" layoutX="20.0" layoutY="177.0" opacity="0.87" prefHeight="24.0" prefWidth="261.0" promptText="NIC Number">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtEmailAddress" layoutX="106.0" layoutY="156.0" prefHeight="22.0" prefWidth="261.0" promptText="Email Address">
+      <TextField fx:id="txtEmailAddress" layoutX="20.0" layoutY="209.0" opacity="0.87" prefHeight="22.0" prefWidth="261.0" promptText="Email Address">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtPassword" layoutX="106.0" layoutY="258.0" prefHeight="24.0" prefWidth="261.0" promptText="Password">
+      <TextField fx:id="txtPassword" layoutX="20.0" layoutY="310.0" opacity="0.87" prefHeight="24.0" prefWidth="261.0" promptText="Password">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtUserName" layoutX="106.0" layoutY="224.0" prefHeight="21.0" prefWidth="261.0" promptText="User Name">
+      <TextField fx:id="txtUserName" layoutX="20.0" layoutY="276.0" opacity="0.87" prefHeight="21.0" prefWidth="261.0" promptText="User Name">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </TextField>
-      <JFXButton layoutX="136.0" layoutY="331.0" onAction="#btnCreateAccountOnAction" prefHeight="28.0" prefWidth="183.0" style="-fx-background-color: #0b6623; -fx-background-radius: 22; -fx-border-radius: 22; -fx-border-color: #ffffff;" text="CREATE ACCOUNT" textFill="#fcfafa">
+      <JFXButton layoutX="64.0" layoutY="352.0" maxHeight="-Infinity" minHeight="-Infinity" onAction="#btnCreateAccountOnAction" prefHeight="35.0" prefWidth="160.0" style="-fx-background-color: #2d3436; -fx-background-radius: 10; -fx-border-radius: 10;" text="CREATE ACCOUNT" textFill="#fcfafa">
          <font>
-            <Font name="Gidugu" size="20.0" />
+            <Font name="System Bold" size="13.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <Label layoutX="100.0" layoutY="395.0" prefHeight="21.0" prefWidth="189.0" text="Already have an account?" textFill="#042c39">
+      <Label layoutX="20.0" layoutY="404.0" prefHeight="21.0" prefWidth="189.0" text="Already have an account?" textFill="#042c39">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="txtEmailAddress1" layoutX="106.0" layoutY="190.0" prefHeight="22.0" prefWidth="261.0" promptText="Phone Number">
+      <TextField fx:id="txtPhoneNumber" layoutX="20.0" layoutY="242.0" opacity="0.87" prefHeight="22.0" prefWidth="261.0" promptText="Phone Number">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </TextField>
-      <JFXButton layoutX="289.0" layoutY="394.0" text="Login Here" textFill="#2f0303">
+      <TextField fx:id="txtType" layoutX="20.0" layoutY="81.0" opacity="0.87" prefHeight="24.0" prefWidth="261.0" promptText="Type">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
-      </JFXButton>
+      </TextField>
+      <Hyperlink layoutX="209.0" layoutY="403.0" onAction="#hyperLoginHereOnAction" prefHeight="22.0" prefWidth="91.0" text="Login here" textFill="#0a0a0a">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Hyperlink>
    </children>
+   <effect>
+      <DropShadow />
+   </effect>
 </AnchorPane>

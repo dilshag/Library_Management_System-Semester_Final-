@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -91,4 +92,16 @@ public class LoginController {
 
     }
 
+    public void hyperSignUpOnAction(ActionEvent actionEvent) throws IOException {
+        Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/signupPage.fxml"));
+
+        Scene scene = new Scene(rootNode);
+
+        root.getScene().getWindow();
+        Stage primaryStage = (Stage) root.getScene().getWindow();
+
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Signup Form");
+        primaryStage.show();
+    }
 }

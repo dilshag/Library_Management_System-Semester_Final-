@@ -127,7 +127,9 @@ public class AuthorController {
         try {
             boolean isDeleted = AuthorRepo.delete(id);
             if(isDeleted) {
-                new Alert(Alert.AlertType.CONFIRMATION, "customer deleted!").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "Author deleted!").show();
+                clearFields();
+                loadAllAuthor();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -175,6 +177,8 @@ public class AuthorController {
             System.out.println(isUpdated);
             if(isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "author updated!").show();
+                clearFields();
+                loadAllAuthor();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

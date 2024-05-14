@@ -124,8 +124,10 @@ public class BookRackController {
             boolean isUpdated = BookRackRepo.update(bookRack);
 
             if (isUpdated) {
+               // System.out.println(isUpdated);
                 new Alert(Alert.AlertType.CONFIRMATION, "updated!").show();
                 clearFields();
+                loadAllBookRack();
 
             }
         } catch (SQLException e) {
@@ -168,8 +170,10 @@ public class BookRackController {
             boolean isDeleted = BookRackRepo.delete(rackCode);
             if (isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Deleted!").show();
+                clearFields();
+                loadAllBookRack();
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }

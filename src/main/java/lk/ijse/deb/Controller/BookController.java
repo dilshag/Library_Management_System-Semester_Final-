@@ -13,8 +13,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.deb.model.Author;
 import lk.ijse.deb.model.Book;
+import lk.ijse.deb.model.BookRack;
 import lk.ijse.deb.model.tm.BookTm;
 import lk.ijse.deb.repository.AuthorRepo;
+import lk.ijse.deb.repository.BookRackRepo;
 import lk.ijse.deb.repository.BookRepo;
 
 import java.io.IOException;
@@ -67,12 +69,49 @@ public class BookController {
 
     @FXML
     private TextField txtQtyOnHand;
+    @FXML
+    private TableColumn<?, ?> colRackCode;
 
     public void initialize() {
         setCellValueFactory();
         loadAllBook();
+        getAutherId();
+        getRackCode();
     }
 
+    private void getRackCode() {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+
+        try {
+            List<String> idList = BookRackRepo.getCodes() ;
+
+            for(String id : idList) {
+                obList.add(id);
+            }
+
+            cmbRackCode.setItems(obList);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void getAutherId() {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+
+        try {
+            List<String> idList = AuthorRepo.getCodes() ;
+
+            for(String id : idList) {
+                obList.add(id);
+            }
+
+            cmbAuthorId.setItems(obList);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
     private void loadAllBook() throws RuntimeException {
         ObservableList<BookTm> obList = FXCollections.observableArrayList();
 
@@ -84,6 +123,7 @@ public class BookController {
                         book.getBookName(),
                         book.getCategory(),
                         book.getQtyOnHand(),
+                        book.getRackCode(),
                         book.getAuthorId()
                 );
 
@@ -101,7 +141,11 @@ public class BookController {
         colBookName.setCellValueFactory(new PropertyValueFactory<>("bookName"));
         colCategory.setCellValueFactory(new PropertyValueFactory<>("category"));
         colQtyOnHand.setCellValueFactory(new PropertyValueFactory<>("qtyOnHand"));
-        colAuthorId.setCellValueFactory(new PropertyValueFactory<>("authorId"));
+        colRackCode.setCellValueFactory(new PropertyValueFactory<>("rackCode"));
+       colAuthorId.setCellValueFactory(new PropertyValueFactory<>("authorId"));
+
+
+
     }
 
     @FXML
@@ -125,6 +169,10 @@ public class BookController {
         txtBookName.setText("");
         txtCategory.setText("");
         txtQtyOnHand.setText("");
+   cmbRackCode.setValue(null);
+   cmbAuthorId.setValue(null);
+
+
 
     }
 
@@ -136,6 +184,8 @@ public class BookController {
             boolean isDeleted = BookRepo.delete(ISBN);
             if(isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Book Deleted!").show();
+                clearFields();
+                loadAllBook();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -183,6 +233,8 @@ public class BookController {
             boolean isUpdated = BookRepo.update(book);
             if(isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Book Updated!").show();
+                clearFields();
+                loadAllBook();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -191,20 +243,26 @@ public class BookController {
 
     @FXML
     void cmbAuthorIdOnAction(ActionEvent event) {
-        String authorId = cmbAuthorId.getValue();
+        String code = cmbAuthorId.getValue();
+
         try {
-            Author author = AuthorRepo.searchAuthorId(authorId);
-
-            lblAuthorName.setText(author.getAuthorName());
-
+            Author author = AuthorRepo.searchAuthorId(code);
         } catch (SQLException e) {
             throw new RuntimeException(e);
+
         }
     }
 
     @FXML
     void cmbRackCodeOnAction(ActionEvent event) {
+        String code = cmbRackCode.getValue();
 
+        try {
+            BookRack bookRack = BookRackRepo.searchBookRack(code);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+
+        }
     }
 
     @FXML

@@ -15,11 +15,13 @@ import java.time.LocalDate;
 
 
 public class MembershipFeesTm {
-    private String id;
+    private String fee_id ;
     private String name;
-    private String status;
     private double amount;
     private LocalDate date;
+    private String status;
+
+
 
 
     public Object getPaidDate() {
