@@ -9,8 +9,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.deb.Util.Regex;
 import lk.ijse.deb.model.Member;
 import lk.ijse.deb.model.MembershipFees;
 import lk.ijse.deb.model.tm.MemberTm;
@@ -204,38 +206,45 @@ public class MemberFormController {
 
     @FXML
     void btnSaveOnAction(ActionEvent event) {
-         String mid = txtMid.getText();
-         String name = txtName.getText();
-         String address = txtAddress.getText();
-         String gender = txtGender.getText();
-         String tel = txtTel.getText();
-         String EmailAddress = txtEmailAddress.getText();
-         String IDNumber = txtIDNumber.getText();
-         String feeId = cmbmembershipFeeId.getValue();
+        String mid = txtMid.getText();
+        String name = txtName.getText();
+        String address = txtAddress.getText();
+        String gender = txtGender.getText();
+        String tel = txtTel.getText();
+        String EmailAddress = txtEmailAddress.getText();
+        String IDNumber = txtIDNumber.getText();
+        String feeId = cmbmembershipFeeId.getValue();
 
-        Member member = new Member(mid,name,address,gender,tel,EmailAddress,IDNumber,feeId);
+        Member member = new Member(mid, name, address, gender, tel, EmailAddress, IDNumber, feeId);
+        if (isValied()) {
+            try {
+                boolean isSaved = MemberRepo.save(member);
+                if (isSaved) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Member saved!").show();
+                    clearFields();
+                    setCellValueFactory();
+                    loadAllMember();
+                } else {
+                    new Alert(Alert.AlertType.ERROR, "ohh,Member not Saved!!!").show();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
 
-        try {
-            boolean isSaved = MemberRepo.save(member);
-            if (isSaved) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Member saved!").show();
-                clearFields();
-                setCellValueFactory();
-                loadAllMember();
-            }else{
-                new Alert(Alert.AlertType.ERROR,"ohh,Member not Saved!!!").show();
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
-
+        } else {
+            // Show error message if validation fails
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Validation Error");
+            alert.setHeaderText("Validation Failed");
+            alert.setContentText("Please fill in all fields correctly.");
+            alert.showAndWait();
         }
     }
 
-
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
-        String mid  = txtMid.getText();
-        String name =  txtName.getText();
+        String mid = txtMid.getText();
+        String name = txtName.getText();
         String address = txtAddress.getText();
         String gender = txtGender.getText();
         String tel = txtTel.getText();
@@ -244,26 +253,32 @@ public class MemberFormController {
         String feeId = cmbmembershipFeeId.getValue();
 
 
+        Member member = new Member(mid, name, address, gender, tel, EmailAddress, IDNumber, feeId);
 
-        Member member = new Member(mid,name,address,gender,tel,EmailAddress,IDNumber,feeId);
+        if (isValied()) {
+            try {
+                boolean isUpdated = MemberRepo.update(member);
 
-
-        try {
-            boolean isUpdated = MemberRepo.update(member);
-
-            if (isUpdated){
-                new Alert(Alert.AlertType.CONFIRMATION,"Member Updated Successfully!!!").show();
-                clearFields();
-                loadAllMember();
-            }else{
-                new  Alert(Alert.AlertType.ERROR,"not updated!!!").show();
+                if (isUpdated) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Member Updated Successfully!!!").show();
+                    clearFields();
+                    loadAllMember();
+                } else {
+                    new Alert(Alert.AlertType.ERROR, "not updated!!!").show();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+
+        } else {
+            // Show error message if validation fails
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Validation Error");
+            alert.setHeaderText("Validation Failed");
+            alert.setContentText("Please fill in all fields correctly.");
+            alert.showAndWait();
         }
-
     }
-
     @FXML
     void cmbMembershipFeeOnAction(ActionEvent event) {
         String code = cmbmembershipFeeId.getValue();
@@ -304,4 +319,33 @@ public class MemberFormController {
             }
     }
 
+    public void txtNameOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.deb.Util.TextField.NAME, txtName);
+    }
+
+    public void txtEmailAddressOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.deb.Util.TextField.EMAIL,txtEmailAddress );
+    }
+
+    public void txtMidOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.deb.Util.TextField.MID,txtMid);
+    }
+
+    public void txtTelOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.deb.Util.TextField.CONTACT, txtTel);
+    }
+
+    public void txtIDNumberOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.deb.Util.TextField.NIC, txtIDNumber);
+    }
+
+    public boolean isValied(){
+        boolean mnameValid = Regex.setTextColor(lk.ijse.deb.Util.TextField.NAME,txtName);
+        boolean memailValid = Regex.setTextColor(lk.ijse.deb.Util.TextField.EMAIL,txtEmailAddress);
+        boolean midValid = Regex.setTextColor(lk.ijse.deb.Util.TextField.MID, txtMid);
+        boolean mtelValid = Regex.setTextColor(lk.ijse.deb.Util.TextField.CONTACT, txtTel);
+        boolean mnicValid = Regex.setTextColor(lk.ijse.deb.Util.TextField.NIC,txtIDNumber);
+
+        return mnameValid && memailValid && midValid && mtelValid && mnicValid;
+    }
 }

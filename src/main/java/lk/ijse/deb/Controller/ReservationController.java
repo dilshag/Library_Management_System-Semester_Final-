@@ -10,8 +10,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.deb.Util.Regex;
+import lk.ijse.deb.db.DbConnection;
 import lk.ijse.deb.model.Book;
 import lk.ijse.deb.model.MembershipFees;
 import lk.ijse.deb.model.Reservation;
@@ -23,6 +26,7 @@ import lk.ijse.deb.repository.MembershipFeesRepo;
 import lk.ijse.deb.repository.ReservationRepo;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
@@ -218,20 +222,40 @@ public class ReservationController {
 
 
         ReservationTm reservation = new ReservationTm(reservationId, borrowedDate, dueDate, bookReturnDate, fineStatus, fineAmount, mid, ISBN);
+//============TRANSACTION============
+        if (isValied()) {
+            try (Connection connection = DbConnection.getInstance().getConnection()) {
+                connection.setAutoCommit(false);
 
-        try {
-            boolean isAdd = ReservationRepo.addReservation(reservation);
-            if (isAdd) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Reservation Added Successfully!!!").show();
-                clearFields();
-                loadAllReservation();
-                setCellValueFactory();
-
-            } else {
-                new Alert(Alert.AlertType.ERROR, "Reservation failed!!!").show();
+                // Add reservation
+                boolean isAdd = ReservationRepo.addReservation(reservation);
+                if (isAdd) {
+                    boolean isQtyUpdate = BookRepo.UPDATEQTY(ISBN);
+                    if (isQtyUpdate) {
+                        connection.commit();
+                        new Alert(Alert.AlertType.CONFIRMATION, "Reservation Added Successfully!!!").show();
+                        clearFields();
+                        loadAllReservation();
+                        setCellValueFactory();
+                    } else {
+                        connection.rollback();
+                        new Alert(Alert.AlertType.ERROR, "Qty Update failed!!!").show();
+                    }
+                } else {
+                    connection.rollback();
+                    new Alert(Alert.AlertType.ERROR, "Reservation failed!!!").show();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            setDate();
+        } else {
+            // Show error message if validation fails
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Validation Error");
+            alert.setHeaderText("Validation Failed");
+            alert.setContentText("Please fill in all fields correctly.");
+            alert.showAndWait();
         }
     }
 
@@ -318,19 +342,27 @@ public class ReservationController {
         String ISBN = cmbISBN.getValue();
 
         Reservation reservation = new Reservation(reservationId, borrowedDate, dueDate, bookReturnDate, fineStatus, fineAmount, mid, ISBN);
-
-        try {
-            boolean isUpdated = ReservationRepo.updateReservation(reservation);
-            if (isUpdated) {
-                new Alert(Alert.AlertType.INFORMATION, "Reservation successfully Updated!!!").show();
-                loadAllReservation();
-            } else {
-                new Alert(Alert.AlertType.ERROR, "Not Updated !!!").show();
+        if (isValied()) {
+            try {
+                boolean isUpdated = ReservationRepo.updateReservation(reservation);
+                if (isUpdated) {
+                    new Alert(Alert.AlertType.INFORMATION, "Reservation successfully Updated!!!").show();
+                    loadAllReservation();
+                } else {
+                    new Alert(Alert.AlertType.ERROR, "Not Updated !!!").show();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-        }
 
+        } else {
+            // Show error message if validation fails
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Validation Error");
+            alert.setHeaderText("Validation Failed");
+            alert.setContentText("Please fill in all fields correctly.");
+            alert.showAndWait();
+        }
     }
 
     @FXML
@@ -388,5 +420,14 @@ public class ReservationController {
 
     }
 
+    public void txtReservationIdOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.deb.Util.TextField.RID,txtReservationId);
+    }
+
+    public boolean isValied(){
+        boolean ridValid =Regex.setTextColor(lk.ijse.deb.Util.TextField.RID,txtReservationId);
+
+        return ridValid;
+    }
 }
 

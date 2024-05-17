@@ -176,7 +176,6 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="ChildRoot" layoutX="313.0" layoutY="29.0" prefHeight="644.0" prefWidth="1024.0" />
       <JFXButton layoutX="63.0" layoutY="181.0" onAction="#btnMembershipFeeOnAction" prefHeight="43.0" prefWidth="223.0" style="-fx-background-color: #006266; -fx-border-radius: 8;" text="            Membership Fee">
          <font>
             <Font name="System Bold" size="13.0" />
@@ -236,5 +235,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
+      <AnchorPane fx:id="ChildRoot" layoutX="313.0" layoutY="29.0" prefHeight="644.0" prefWidth="1024.0" />
    </children>
 </AnchorPane>

@@ -12,7 +12,7 @@
 
 <AnchorPane fx:id="root" prefHeight="616.0" prefWidth="1024.0" style="-fx-background-color: fcfafa;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.deb.Controller.BookRackController">
    <children>
-      <TextField fx:id="txtCode" layoutX="77.0" layoutY="152.0" onAction="#txtCodeOnAction" prefHeight="29.0" prefWidth="313.0" promptText="Rack Code" style="-fx-border-color: #222f3e;">
+      <TextField fx:id="txtCode" layoutX="77.0" layoutY="152.0" onAction="#txtCodeOnAction" onKeyReleased="#txtCodeOnKeyReleased" prefHeight="29.0" prefWidth="313.0" promptText="Rack Code" style="-fx-border-color: #222f3e;">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -22,7 +22,7 @@
             <Font name="System Bold" size="21.0" />
          </font>
       </Label>
-      <TextField fx:id="txtQuantity" layoutX="77.0" layoutY="189.0" prefHeight="29.0" prefWidth="313.0" promptText="Quantity of books" style="-fx-border-color: #222f3e;">
+      <TextField fx:id="txtQuantity" layoutX="77.0" layoutY="189.0" onKeyReleased="#txtQuantityOnKeyReleased" prefHeight="29.0" prefWidth="313.0" promptText="Quantity of books" style="-fx-border-color: #222f3e;">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -37,7 +37,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </TextArea>
-      <JFXButton layoutX="708.0" layoutY="528.0" onAction="#btnClearOnAction" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #488E91; -fx-background-radius: 8; -fx-border-color: #f5f6fa;" text="       CLEAR" textFill="#fffbfb">
+      <JFXButton layoutX="390.0" layoutY="570.0" onAction="#btnClearOnAction" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #488E91; -fx-background-radius: 8; -fx-border-color: #f5f6fa;" text="       CLEAR" textFill="#fffbfb">
          <font>
             <Font name="KacstOne Bold" size="12.0" />
          </font>
@@ -45,7 +45,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton layoutX="862.0" layoutY="528.0" onAction="#btnDeleteOnAction" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #488E91; -fx-background-radius: 8; -fx-border-color: #f5f6fa;" text="       DELETE" textFill="#fdfafa">
+      <JFXButton layoutX="544.0" layoutY="570.0" onAction="#btnDeleteOnAction" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #488E91; -fx-background-radius: 8; -fx-border-color: #f5f6fa;" text="       DELETE" textFill="#fdfafa">
          <font>
             <Font name="KacstOne Bold" size="12.0" />
          </font>
@@ -53,7 +53,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton layoutX="708.0" layoutY="487.0" onAction="#btnSaveOnAction" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #2d3436; -fx-background-radius: 8; -fx-border-color: #f5f6fa;" text="      SAVE" textFill="#fdfcfc">
+      <JFXButton layoutX="76.0" layoutY="571.0" onAction="#btnSaveOnAction" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #488E91; -fx-background-radius: 8; -fx-border-color: #f5f6fa;" text="      SAVE" textFill="#fdfcfc">
          <font>
             <Font name="KacstOne Bold" size="12.0" />
          </font>
@@ -61,7 +61,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton layoutX="862.0" layoutY="487.0" onAction="#btnUpdateOnAction" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #2d3436; -fx-background-radius: 8; -fx-border-color: #f5f6fa;" text="         UPDATE" textFill="#fcf9f9">
+      <JFXButton layoutX="233.0" layoutY="570.0" onAction="#btnUpdateOnAction" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #488E91; -fx-background-radius: 8; -fx-border-color: #f5f6fa;" text="         UPDATE" textFill="#fcf9f9">
          <font>
             <Font name="KacstOne Bold" size="12.0" />
          </font>

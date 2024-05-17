@@ -28,12 +28,12 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="txtId" layoutX="70.0" layoutY="211.0" onAction="#txtSearchOnAction" prefHeight="26.0" prefWidth="258.0" promptText="Fee ID" style="-fx-border-color: #2f3640;">
+      <TextField fx:id="txtId" layoutX="70.0" layoutY="211.0" onAction="#txtSearchOnAction" onKeyReleased="#txtIdOnKeyReleased" prefHeight="26.0" prefWidth="258.0" promptText="Fee ID" style="-fx-border-color: #2f3640;">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtName" layoutX="70.0" layoutY="241.0" prefHeight="26.0" prefWidth="258.0" promptText="Member Name" style="-fx-border-color: #2f3640;">
+      <TextField fx:id="txtName" layoutX="70.0" layoutY="241.0" onKeyReleased="#txtNameOnKeyReleased" prefHeight="26.0" prefWidth="258.0" promptText="Member Name" style="-fx-border-color: #2f3640;">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -48,12 +48,12 @@
             <Font name="System Bold" size="14.0" />
          </font>
          <toggleGroup>
-            <ToggleGroup fx:id="paidAmount" />
+            <ToggleGroup fx:id="paidAmountMonthly" />
          </toggleGroup>
       </JFXRadioButton>
       <JFXRadioButton fx:id="rButtonAmountSixMonths" layoutX="157.0" layoutY="306.0" onAction="#getAmount" prefHeight="26.0" prefWidth="114.0" text="1200.00">
          <toggleGroup>
-            <ToggleGroup fx:id="paidAmount" />
+            <ToggleGroup fx:id="paidAmountSixMonth" />
          </toggleGroup>
          <font>
             <Font name="System Bold" size="14.0" />
@@ -61,7 +61,7 @@
       </JFXRadioButton>
       <JFXRadioButton fx:id="rButtonAmountAnually" layoutX="288.0" layoutY="306.0" onAction="#getAmount" prefHeight="26.0" prefWidth="107.0" text="2400.00">
          <toggleGroup>
-            <ToggleGroup fx:id="paidAmount" />
+            <ToggleGroup fx:id="paidAmountAnually" />
          </toggleGroup>
          <font>
             <Font name="System Bold" size="14.0" />
@@ -74,7 +74,7 @@
       </TextField>
       <JFXRadioButton fx:id="rButtonMonthly" layoutX="442.0" layoutY="251.0" onAction="#getStatus" prefHeight="26.0" prefWidth="100.0" text="Monthly">
          <toggleGroup>
-            <ToggleGroup fx:id="Status" />
+            <ToggleGroup fx:id="StatusMonthly" />
          </toggleGroup>
          <font>
             <Font name="System Bold" size="13.0" />
@@ -82,7 +82,7 @@
       </JFXRadioButton>
       <JFXRadioButton fx:id="rButtonSixMonths" layoutX="544.0" layoutY="250.0" onAction="#getStatus" prefHeight="26.0" prefWidth="154.0" text="For Six monthes">
          <toggleGroup>
-            <ToggleGroup fx:id="Status" />
+            <ToggleGroup fx:id="StatusSixMonth" />
          </toggleGroup>
          <font>
             <Font name="System Bold" size="13.0" />
@@ -93,7 +93,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
          <toggleGroup>
-            <ToggleGroup fx:id="Status" />
+            <ToggleGroup fx:id="StatusAnually" />
          </toggleGroup>
       </JFXRadioButton>
       <JFXButton layoutX="29.0" layoutY="587.0" onAction="#btnSaveOnAction" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #488E91; -fx-background-radius: 8; -fx-border-color: #f5f6fa;" text="      SAVE" textFill="#fdfcfc">

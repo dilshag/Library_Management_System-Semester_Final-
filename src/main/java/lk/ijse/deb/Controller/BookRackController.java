@@ -8,8 +8,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.deb.Util.Regex;
 import lk.ijse.deb.model.BookRack;
 import lk.ijse.deb.model.tm.BookRackTm;
 import lk.ijse.deb.repository.BookRackRepo;
@@ -95,20 +97,27 @@ public class BookRackController {
 
 
         BookRackTm bookRack = new BookRackTm(rackCode, qtyBooks, categoryOfBooks, nameOfBooks);
-
-        try {
-            boolean isSaved = BookRackRepo.save(bookRack);
-            if (isSaved) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Saved!").show();
-                loadAllBookRack();
-                clearFields();
-                loadAllBookRack();
+        if (isValied()) {
+            try {
+                boolean isSaved = BookRackRepo.save(bookRack);
+                if (isSaved) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Saved!").show();
+                    loadAllBookRack();
+                    clearFields();
+                    loadAllBookRack();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        } else {
+            // Show error message if validation fails
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Validation Error");
+            alert.setHeaderText("Validation Failed");
+            alert.setContentText("Please fill in all fields correctly.");
+            alert.showAndWait();
         }
     }
-
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
@@ -119,19 +128,28 @@ public class BookRackController {
 
 
         BookRack bookRack = new BookRack(rackCode,qtyBooks,categoryOfBooks,nameOfBooks);
+        if (isValied()) {
 
-        try {
-            boolean isUpdated = BookRackRepo.update(bookRack);
+            try {
+                boolean isUpdated = BookRackRepo.update(bookRack);
 
-            if (isUpdated) {
-               // System.out.println(isUpdated);
-                new Alert(Alert.AlertType.CONFIRMATION, "updated!").show();
-                clearFields();
-                loadAllBookRack();
+                if (isUpdated) {
+                    // System.out.println(isUpdated);
+                    new Alert(Alert.AlertType.CONFIRMATION, "updated!").show();
+                    clearFields();
+                    loadAllBookRack();
 
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }else {
+            // Show error message if validation fails
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Validation Error");
+            alert.setHeaderText("Validation Failed");
+            alert.setContentText("Please fill in all fields correctly.");
+            alert.showAndWait();
         }
     }
 
@@ -197,5 +215,24 @@ public class BookRackController {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
+    }
+
+    public void txtCodeOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.deb.Util.TextField.BRID, txtCode);
+    }
+
+    public void txtQuantityOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.deb.Util.TextField.QUANTITY, txtQuantity);
+    }
+
+   /*public void txtNameOfBooksOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.deb.Util.TextField.AID, txtCategoryOfBooks);
+    }*/
+    public boolean isValied(){
+        boolean bookrackidValid = Regex.setTextColor(lk.ijse.deb.Util.TextField.BRID,txtCode );
+        boolean bookqtyValid = Regex.setTextColor(lk.ijse.deb.Util.TextField.QUANTITY,txtQuantity );
+       // boolean booknameValid = Regex.setTextColor(lk.ijse.deb.Util.TextField.NAME,txtNameOfBooks );
+
+        return bookrackidValid && bookqtyValid ;
     }
 }

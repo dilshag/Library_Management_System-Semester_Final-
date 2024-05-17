@@ -11,8 +11,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.deb.Util.Regex;
 import lk.ijse.deb.model.Author;
 import lk.ijse.deb.model.Book;
 import lk.ijse.deb.model.tm.AuthorTm;
@@ -97,15 +99,10 @@ public class AuthorController {
             colNationality.setCellValueFactory(new PropertyValueFactory<>("nationality"));
             colCurrentlyBooksWrittenQty.setCellValueFactory(new PropertyValueFactory<>("currentlyBooksWrittenQty"));
 
-
-
         }
-
-
 
     @FXML
     void btnClearOnAction(ActionEvent event) {
-
         clearFields();
     }
 
@@ -116,9 +113,7 @@ public class AuthorController {
         txtNationality.setText("");
         txtCurrentlyBooksWrittenQty.setText("");
 
-
     }
-
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
@@ -141,25 +136,32 @@ public class AuthorController {
         String authorId = txtAuthorId.getText();
         String authorName = txtAuthorName.getText();
         String text = txtText.getText();
-        String nationality  = txtNationality.getText();
-        int currentlyBookWrittenQyt= Integer.parseInt(txtCurrentlyBooksWrittenQty.getText());
+        String nationality = txtNationality.getText();
+        int currentlyBookWrittenQyt = Integer.parseInt(txtCurrentlyBooksWrittenQty.getText());
 
 
-        Author author = new Author(authorId, authorName,text,nationality,currentlyBookWrittenQyt);
+        Author author = new Author(authorId, authorName, text, nationality, currentlyBookWrittenQyt);
+        if (isValied()) {
+            try {
+                boolean isSaved = AuthorRepo.save(author);
+                if (isSaved) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "customer saved!").show();
+                    loadAllAuthor();
+                    clearFields();
 
-        try {
-            boolean isSaved = AuthorRepo.save(author);
-            if (isSaved) {
-                new Alert(Alert.AlertType.CONFIRMATION, "customer saved!").show();
-                loadAllAuthor();
-                clearFields();
-
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        } else {
+            // Show error message if validation fails
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Validation Error");
+            alert.setHeaderText("Validation Failed");
+            alert.setContentText("Please fill in all fields correctly.");
+            alert.showAndWait();
         }
     }
-
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
@@ -171,18 +173,27 @@ public class AuthorController {
         int bookWrittenQty= Integer.parseInt(txtCurrentlyBooksWrittenQty.getText());
 
         Author author = new Author(authorId, authorName,text,nationality,bookWrittenQty);
-
-        try {
-            boolean isUpdated = AuthorRepo.update(author);
-            System.out.println(isUpdated);
-            if(isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, "author updated!").show();
-                clearFields();
-                loadAllAuthor();
+        if (isValied()) {
+            try {
+                boolean isUpdated = AuthorRepo.update(author);
+                System.out.println(isUpdated);
+                if (isUpdated) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "author updated!").show();
+                    clearFields();
+                    loadAllAuthor();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
+        else {
+                // Show error message if validation fails
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Validation Error");
+                alert.setHeaderText("Validation Failed");
+                alert.setContentText("Please fill in all fields correctly.");
+                alert.showAndWait();
+            }
     }
 
 
@@ -204,8 +215,6 @@ public class AuthorController {
     }
 
 
-
-
     @FXML
     void btnBackOnAction(ActionEvent event) throws IOException {
 
@@ -217,4 +226,20 @@ public class AuthorController {
         stage.setTitle("Dashboard Form");
     }
 
+    public void txtAuthorIdOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.deb.Util.TextField.AID, txtAuthorId);
+    }
+    public void txtAuthorNameOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.deb.Util.TextField.NAME,txtAuthorName);
+    }
+    public void txtCurrentlyBooksWrittenQtyOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.deb.Util.TextField.QUANTITY,txtCurrentlyBooksWrittenQty);
+    }
+    public boolean isValied(){
+        boolean aidValid = Regex.setTextColor(lk.ijse.deb.Util.TextField.AID, txtAuthorId);
+        boolean anameValid = Regex.setTextColor(lk.ijse.deb.Util.TextField.NAME, txtAuthorId);
+        boolean wqtyValid = Regex.setTextColor(lk.ijse.deb.Util.TextField.QUANTITY, txtCurrentlyBooksWrittenQty);
+
+        return aidValid && anameValid && wqtyValid;
+    }
 }

@@ -99,4 +99,16 @@ public class BookRepo {
         }
 
         return null;    }
+
+
+    public static boolean UPDATEQTY(String isbn) throws SQLException {
+        String sql = "UPDATE book SET qtyOnHand = (qtyOnHand-1) WHERE ISBN = ?";
+            Connection connection = DbConnection.getInstance().getConnection();
+
+            PreparedStatement pstm = connection.prepareStatement(sql);
+
+            pstm.setString(1, isbn);
+
+            return pstm.executeUpdate() > 0;
+    }
 }

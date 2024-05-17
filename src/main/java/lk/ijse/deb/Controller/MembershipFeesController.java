@@ -9,8 +9,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.deb.Util.Regex;
 import lk.ijse.deb.db.DbConnection;
 import lk.ijse.deb.model.MembershipFees;
 import lk.ijse.deb.model.tm.MembershipFeesTm;
@@ -141,30 +143,37 @@ public class MembershipFeesController {
     }
 
     @FXML
-    void btnSaveOnAction(ActionEvent event){
+    void btnSaveOnAction(ActionEvent event) {
         String id = txtId.getText();
         String name = txtName.getText();
         double amount = Double.parseDouble(txtAmount.getText());
         LocalDate date = LocalDate.parse(lblPaidDate.getText());
         String status = txtStatus.getText();
 
-        MembershipFees membershipFees = new MembershipFees(id, name, amount,date,status);
-
-        try {
-            boolean isSaved = MembershipFeesRepo.save(membershipFees);
-            if (isSaved) {
-                new Alert(Alert.AlertType.CONFIRMATION, "membership fees saved!").show();
-                clearFields();
-                setDate();
-                setTotalAmount();
-                loadAllMembershipFee();
-                setCellValueFactory();
+        MembershipFees membershipFees = new MembershipFees(id, name, amount, date, status);
+        if (isValied()) {
+            try {
+                boolean isSaved = MembershipFeesRepo.save(membershipFees);
+                if (isSaved) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "membership fees saved!").show();
+                    clearFields();
+                    setDate();
+                    setTotalAmount();
+                    loadAllMembershipFee();
+                    setCellValueFactory();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        } else {
+            // Show error message if validation fails
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Validation Error");
+            alert.setHeaderText("Validation Failed");
+            alert.setContentText("Please fill in all fields correctly.");
+            alert.showAndWait();
         }
     }
-
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
@@ -172,25 +181,32 @@ public class MembershipFeesController {
         String name = txtName.getText();
         double amount = Double.parseDouble(txtAmount.getText());
         LocalDate date = LocalDate.parse(lblPaidDate.getText());
-        String status =txtStatus.getText();
+        String status = txtStatus.getText();
 
-        MembershipFees membershipFees = new MembershipFees(id, name, amount,date,status);
-
-        try {
-            boolean isUpdated = MembershipFeesRepo.update(membershipFees);
-            if(isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, " updated!").show();
-                clearFields();
-                setDate();
-                setTotalAmount();
-                loadAllMembershipFee();
-                setCellValueFactory();
+        MembershipFees membershipFees = new MembershipFees(id, name, amount, date, status);
+        if (isValied()) {
+            try {
+                boolean isUpdated = MembershipFeesRepo.update(membershipFees);
+                if (isUpdated) {
+                    new Alert(Alert.AlertType.CONFIRMATION, " updated!").show();
+                    clearFields();
+                    setDate();
+                    setTotalAmount();
+                    loadAllMembershipFee();
+                    setCellValueFactory();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        } else {
+            // Show error message if validation fails
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Validation Error");
+            alert.setHeaderText("Validation Failed");
+            alert.setContentText("Please fill in all fields correctly.");
+            alert.showAndWait();
         }
     }
-
 
     @FXML
     void getAmount(ActionEvent event) {
@@ -291,4 +307,18 @@ public class MembershipFeesController {
     }
 
 
+    public void txtIdOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.deb.Util.TextField.MFEEID,txtId);
+    }
+
+    public void txtNameOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(lk.ijse.deb.Util.TextField.NAME,txtName);
+    }
+
+    public boolean isValied(){
+        boolean mnameValid = Regex.setTextColor(lk.ijse.deb.Util.TextField.NAME, txtName);
+        boolean feeidValid = Regex.setTextColor(lk.ijse.deb.Util.TextField.MFEEID, txtId );
+
+        return mnameValid && feeidValid;
+    }
 }

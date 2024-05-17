@@ -17,12 +17,12 @@
             <Font name="System Bold" size="21.0" />
          </font>
       </Label>
-      <TextField fx:id="txtISBN" layoutX="78.0" layoutY="222.0" onAction="#txtISBNOnAction" prefHeight="29.0" prefWidth="356.0" promptText="ISBN" style="-fx-border-color: #2d3436;">
+      <TextField fx:id="txtISBN" layoutX="78.0" layoutY="222.0" onAction="#txtISBNOnAction" onKeyReleased="#txtISBNOnKeyReleased" prefHeight="29.0" prefWidth="356.0" promptText="ISBN" style="-fx-border-color: #2d3436;">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtBookName" layoutX="78.0" layoutY="259.0" prefHeight="29.0" prefWidth="356.0" promptText="Book Name" style="-fx-border-color: #2d3436;">
+      <TextField fx:id="txtBookName" layoutX="78.0" layoutY="259.0" onKeyReleased="#txtBookNameOnKeyReleased" prefHeight="29.0" prefWidth="356.0" promptText="Book Name" style="-fx-border-color: #2d3436;">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -33,7 +33,7 @@
          </font>
       </Label>
       <JFXComboBox fx:id="cmbAuthorId" layoutX="221.0" layoutY="180.0" onAction="#cmbAuthorIdOnAction" prefHeight="33.0" prefWidth="213.0" />
-      <TextField fx:id="txtQtyOnHand" layoutX="498.0" layoutY="222.0" prefHeight="29.0" prefWidth="356.0" promptText="Qty On Hand" style="-fx-border-color: #2d3436;">
+      <TextField fx:id="txtQtyOnHand" layoutX="498.0" layoutY="222.0" onKeyReleased="#txtQtyOnHandOnKeyReleased" prefHeight="29.0" prefWidth="356.0" promptText="Qty On Hand" style="-fx-border-color: #2d3436;">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -49,7 +49,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <JFXButton layoutX="705.0" layoutY="515.0" onAction="#btnSaveOnAction" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #2d3436; -fx-background-radius: 8; -fx-border-color: #f5f6fa; -fx-border-radius: 8;" text="      SAVE" textFill="#f5f3f3">
+      <JFXButton layoutX="78.0" layoutY="594.0" onAction="#btnSaveOnAction" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #488E91; -fx-background-radius: 8; -fx-border-color: #f5f6fa; -fx-border-radius: 8;" text="      SAVE" textFill="#f5f3f3">
          <font>
             <Font name="KacstOne Bold" size="12.0" />
          </font>
@@ -57,7 +57,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton layoutX="858.0" layoutY="515.0" onAction="#btnUpdateOnAction" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #2d3436; -fx-background-radius: 8; -fx-border-color: #f5f6fa; -fx-border-radius: 8;" text="         UPDATE" textFill="#f5f3f3">
+      <JFXButton layoutX="228.0" layoutY="594.0" onAction="#btnUpdateOnAction" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #488E91; -fx-background-radius: 8; -fx-border-color: #f5f6fa; -fx-border-radius: 8;" text="         UPDATE" textFill="#f5f3f3">
          <font>
             <Font name="KacstOne Bold" size="12.0" />
          </font>
@@ -65,7 +65,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton layoutX="705.0" layoutY="554.0" onAction="#btnClearOnAction" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #488E91; -fx-background-radius: 8; -fx-border-color: #f5f6fa; -fx-border-radius: 8;" text="      CLEAR" textFill="#f5f3f3">
+      <JFXButton layoutX="377.0" layoutY="594.0" onAction="#btnClearOnAction" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #488E91; -fx-background-radius: 8; -fx-border-color: #f5f6fa; -fx-border-radius: 8;" text="      CLEAR" textFill="#f5f3f3">
          <font>
             <Font name="KacstOne Bold" size="12.0" />
          </font>
@@ -73,7 +73,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton layoutX="858.0" layoutY="554.0" onAction="#btnDeleteOnAction" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #488E91; -fx-background-radius: 8; -fx-border-color: #f5f6fa; -fx-border-radius: 8;" text="         DELETE" textFill="#f5f3f3">
+      <JFXButton layoutX="527.0" layoutY="594.0" onAction="#btnDeleteOnAction" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #488E91; -fx-background-radius: 8; -fx-border-color: #f5f6fa; -fx-border-radius: 8;" text="         DELETE" textFill="#f5f3f3">
          <font>
             <Font name="KacstOne Bold" size="12.0" />
          </font>

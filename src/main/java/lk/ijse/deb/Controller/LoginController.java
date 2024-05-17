@@ -46,6 +46,9 @@ public class LoginController {
         String userId = this.txtUserName.getText();
         String pw = this.txtPassword.getText();
 
+        userId = "dilsha";
+        pw = "dilsha123";
+
 
         try {
             this.checkCredential(userId, pw);

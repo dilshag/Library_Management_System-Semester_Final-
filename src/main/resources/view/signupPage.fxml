@@ -27,32 +27,32 @@
             <DropShadow />
          </effect>
       </Rectangle>
-      <TextField fx:id="txtFirstname" layoutX="20.0" layoutY="113.0" opacity="0.87" prefHeight="22.0" prefWidth="261.0" promptText="First Name">
+      <TextField fx:id="txtFirstname" layoutX="20.0" layoutY="113.0" onKeyReleased="#txtFirstnameOnKeyReleased" opacity="0.87" prefHeight="22.0" prefWidth="261.0" promptText="First Name">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtLastname" layoutX="20.0" layoutY="145.0" opacity="0.87" prefHeight="24.0" prefWidth="261.0" promptText="Last name">
+      <TextField fx:id="txtLastname" layoutX="20.0" layoutY="145.0" onKeyReleased="#txtLastnameOnKeyReleased" opacity="0.87" prefHeight="24.0" prefWidth="261.0" promptText="Last name">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtNIC" layoutX="20.0" layoutY="177.0" opacity="0.87" prefHeight="24.0" prefWidth="261.0" promptText="NIC Number">
+      <TextField fx:id="txtNIC" layoutX="20.0" layoutY="177.0" onKeyReleased="#txtNICOnKeyReleased" opacity="0.87" prefHeight="24.0" prefWidth="261.0" promptText="NIC Number">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtEmailAddress" layoutX="20.0" layoutY="209.0" opacity="0.87" prefHeight="22.0" prefWidth="261.0" promptText="Email Address">
+      <TextField fx:id="txtEmailAddress" layoutX="20.0" layoutY="209.0" onKeyReleased="#txtEmailAddressOnKeyReleased" opacity="0.87" prefHeight="22.0" prefWidth="261.0" promptText="Email Address">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtPassword" layoutX="20.0" layoutY="310.0" opacity="0.87" prefHeight="24.0" prefWidth="261.0" promptText="Password">
+      <TextField fx:id="txtPassword" layoutX="20.0" layoutY="310.0" onKeyReleased="#txtPasswordOnKeyReleased" opacity="0.87" prefHeight="24.0" prefWidth="261.0" promptText="Password">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtUserName" layoutX="20.0" layoutY="276.0" opacity="0.87" prefHeight="21.0" prefWidth="261.0" promptText="User Name">
+      <TextField fx:id="txtUserName" layoutX="20.0" layoutY="276.0" onKeyReleased="#txtUserNameOnKeyReleased" opacity="0.87" prefHeight="21.0" prefWidth="261.0" promptText="User Name">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -70,12 +70,12 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="txtPhoneNumber" layoutX="20.0" layoutY="242.0" opacity="0.87" prefHeight="22.0" prefWidth="261.0" promptText="Phone Number">
+      <TextField fx:id="txtPhoneNumber" layoutX="20.0" layoutY="242.0" onKeyReleased="#txtPhoneNumberOnKeyReleased" opacity="0.87" prefHeight="22.0" prefWidth="261.0" promptText="Phone Number">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtType" layoutX="20.0" layoutY="81.0" opacity="0.87" prefHeight="24.0" prefWidth="261.0" promptText="Type">
+      <TextField fx:id="txtType" layoutX="20.0" layoutY="81.0" onKeyReleased="#txtTypeOnKeyReleased" opacity="0.87" prefHeight="24.0" prefWidth="261.0" promptText="Type">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
