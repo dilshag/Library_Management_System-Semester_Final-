@@ -252,10 +252,10 @@ public class MembershipFeesController {
     }
 
     public  void initialize() throws SQLException {
-        setDate();
-       loadAllMembershipFee();
-        setCellValueFactory();
-      setTotalAmount();
+         setDate();
+         loadAllMembershipFee();
+         setCellValueFactory();
+         setTotalAmount();
 
         //tableListener();
 
