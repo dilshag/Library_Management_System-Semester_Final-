@@ -17,6 +17,10 @@ import lk.ijse.deb.db.DbConnection;
 import lk.ijse.deb.model.MembershipFees;
 import lk.ijse.deb.model.tm.MembershipFeesTm;
 import lk.ijse.deb.repository.MembershipFeesRepo;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -25,7 +29,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MembershipFeesController {
 
@@ -320,5 +326,16 @@ public class MembershipFeesController {
         boolean feeidValid = Regex.setTextColor(lk.ijse.deb.Util.TextField.MFEEID, txtId );
 
         return mnameValid && feeidValid;
+    }
+
+    public void btnPrintOnAction(ActionEvent actionEvent) throws SQLException, JRException {
+        JasperDesign jasperDesign = JRXmlLoader.load("src/main/resources/report/membershipfee.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+
+        Map<String,Object> data = new HashMap<>();
+        data.put("MFID","");//txtAmount.getText()
+
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, data, DbConnection.getInstance().getConnection());
+        JasperViewer.viewReport(jasperPrint,false);
     }
 }

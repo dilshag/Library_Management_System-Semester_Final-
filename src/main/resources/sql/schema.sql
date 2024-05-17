@@ -79,10 +79,6 @@ create table reservation(
 );
 
 
-
-
-
-
 create table supplier(
                     supplierId varchar(10) primary key ,
                     supplierName varchar(1000) not null,
